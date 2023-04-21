@@ -13,6 +13,7 @@ Para rodar o projeto, você vai precisar das sequintes ferramentas:
    1.  Instalação: https://www.oracle.com/br/java/technologies/javase/javase8-archive-downloads.html
    2. configurar variaveis de ambiente Windows/Mac/Linux: https://medium.com/beelabacademy/configurando-vari%C3%A1veis-de-ambiente-java-home-e-maven-home-no-windows-e-unix-d9461f783c26
 2. WebDriver para o navegador Google Chrome (baixar de acordo com sua versão do navegador): https://chromedriver.chromium.org/downloads
+   3. Após baixar o chromeDriver extraia o arquivo para o diretorio do projeto `src/main/resources/webdriver:` 
 
 # Estrutura do Projeto
 Eu utilizei o Maven para gerenciar as dependências do meu projeto de automação em Java e organizei a estrutura do projeto utilizando o POM (Project Object Model). Também utilizei o conceito de Page Object Model para separar o código de teste do código da interface gráfica, tornando o meu código mais fácil de manter e reutilizar.
