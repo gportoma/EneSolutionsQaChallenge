@@ -1,7 +1,6 @@
 package steps;
 
 import core.DriverFactory;
-import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
@@ -11,35 +10,22 @@ public class BuscaStep {
 
     private final HomeBlogPage homeBlogPage;
 
-
     public BuscaStep() {
         homeBlogPage = new HomeBlogPage(DriverFactory.getDriver());
     }
 
-
     @Quando("eu faço uma pesquisa pela palavra {string}")
     public void euFacoUmaPesquisaPelaPalavra(String word) {
-
-    }
-
-    @Quando("eu faço uma pesquisa vazia")
-    public void euFacoUmaPesquisaVazia() {
-
+        homeBlogPage.search(word);
     }
 
     @Então("o site deve exibir os posts relacionados ao assunto pesquisado")
     public void oSiteDeveExibirPostsRelacionadosAoAssuntoPesquisado() {
-
+        Assert.assertTrue(homeBlogPage.postIsVisible());
     }
 
     @Então("o site deve exibir a mensagem {string} indicando que não há posts relacionados à palavra pesquisada")
-    public void oSiteDeveExibirMensagemIndicandoQueNaoHaPostsRelacionadosAPalavraPesquisada() {
-
+    public void oSiteDeveExibirMensagemIndicandoQueNaoHaPostsRelacionadosAPalavraPesquisada(String resultNotFound) {
+        Assert.assertTrue(homeBlogPage.resultNotFound(resultNotFound));
     }
-
-    @Então("o site deve exibir a mensagem {string} indicando que nenhuma palavra-chave foi inserida na pesquisa")
-    public void oSiteDeveExibirAMensagemIndincadoQueNenhumaPalavraFoiInseridaNaPesquisa() {
-
-    }
-
 }

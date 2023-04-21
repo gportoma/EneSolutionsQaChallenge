@@ -39,6 +39,22 @@ public class HomeBlogPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Vamos construir')]")
     private WebElement textPageContato;
 
+    @FindBy(xpath = "//input[@type='search' and @placeholder='Tecnologia']")
+    private WebElement searchWord;
+
+    @FindBy(xpath = "//input[@type='search']/following-sibling::span[contains(@class,'ant-input-suffix')]/img")
+    private WebElement buttonSearch;
+
+    @FindBy(xpath = "//h3[@class=\"text-maastrichtBlue text-2.375xl font-bold pb-4 m-0 leading-[46px] lg:text-5.5xl lg:leading-[64px]\"]")
+    private WebElement titlePost;
+
+    @FindBy(xpath = "//*[@class=\"text-center text-2xl font-bold text-maastrichtBlue mb-16\"]\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "\n")
+    private WebElement titleNoResultsFound;
+
     public void accessWebSite() {
         driver.get("https://www.enesolucoes.com.br/");
         dsl.toClick(buttonBlog);
@@ -74,7 +90,7 @@ public class HomeBlogPage extends BasePage {
                     test = true;
                 }
                 break;
-            case "o formulário de contato da Ene Soluções" :
+            case "o formulário de contato da Ene Soluções":
             case "o formulário de contratação de serviços da Ene":
                 if (Objects.equals(dsl.getText(textPageContato), "Vamos construir projetos incríveis juntos?")) {
                     test = true;
@@ -82,5 +98,18 @@ public class HomeBlogPage extends BasePage {
                 break;
         }
         return test;
+    }
+
+    public void search(String word) {
+        dsl.type(searchWord, word);
+        dsl.toClick(buttonSearch);
+    }
+
+    public Boolean postIsVisible() {
+        return titlePost.isDisplayed();
+    }
+
+    public Boolean resultNotFound(String resultNotFound){
+        return Objects.equals(dsl.getText(titleNoResultsFound), resultNotFound);
     }
 }
