@@ -21,7 +21,7 @@ public class BuscaStep {
     }
 
     @Então("o site deve exibir os posts relacionados ao assunto pesquisado")
-    public void oSiteDeveExibirPostsRelacionadosAoAssuntoPesquisado() {
+    public void oSiteDeveExibirPostsRelacionadosAoAssuntoPesquisado() throws Exception {
         Assert.assertTrue(homeBlogPage.postIsVisible());
     }
 

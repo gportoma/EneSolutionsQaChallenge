@@ -49,7 +49,7 @@ public class HomeBlogPage extends BasePage {
     @FindBy(xpath = "//input[@type='search']/following-sibling::span[contains(@class,'ant-input-suffix')]/img")
     private WebElement buttonSearch;
 
-    @FindBy(xpath = "//h3[@class=\"text-maastrichtBlue text-2.375xl font-bold pb-4 m-0 leading-[46px] lg:text-5.5xl lg:leading-[64px]\"]")
+    @FindBy(xpath = "//h3[@class='text-maastrichtBlue text-2.375xl font-bold pb-4 m-0 leading-[46px] lg:text-5.5xl lg:leading-[64px]']\n")
     private WebElement titlePost;
 
     @FindBy(xpath = "//*[@class=\"text-center text-2xl font-bold text-maastrichtBlue mb-16\"]\n" +
@@ -122,20 +122,31 @@ public class HomeBlogPage extends BasePage {
 
     public void search(String word) {
         dsl.type(searchWord, word);
-        dsl.toClick(buttonSearch);
+        highLighterMethod(searchWord);
+        highLighterMethod(buttonSearch);
         ScreenShotUtils.takeScreenshot();
+        dsl.toClick(buttonSearch);
     }
 
-    public Boolean postIsVisible() {
+    public Boolean postIsVisible() throws Exception {
+        scrollToElement(titlePost);
+        highLighterMethod(titlePost);
+        ScreenShotUtils.takeScreenshot();
         return titlePost.isDisplayed();
     }
 
     public Boolean resultNotFound(String resultNotFound) {
+        highLighterMethod(titleNoResultsFound);
+        ScreenShotUtils.takeScreenshot();
         return Objects.equals(dsl.getText(titleNoResultsFound), resultNotFound);
     }
 
     private void highLighterMethod(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].setAttribute('style', 'border: 6px solid red;');", element);
+    }
+
+    private void scrollToElement(WebElement webElement) throws Exception {
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoViewIfNeeded()", webElement);
     }
 }
