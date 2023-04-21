@@ -12,4 +12,4 @@ Funcionalidade: Menu
       | "Serviços"  | "a tela de Serviços"                              |
       | "Vagas"     | "a página de vagas de emprego na Ene Soluções"    |
       | "Contato"   | "o formulário de contato da Ene Soluções"         |
-      | "Contratar" | "o formulário de contratação de serviços da Ene " |
+      | "Contratar" | "o formulário de contratação de serviços da Ene" |
