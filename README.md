@@ -52,7 +52,7 @@ Eu utilizei o Maven para gerenciar as dependências do meu projeto de automaçã
 
 No terminal clone o projeto:
 ```
-git clone https://github.com/seu-usuario/seu-projeto.git
+git clone https://github.com/gportoma/EneSolutionsQaChallenge.git
 ```
 
 Abra o projeto em sua IDE e vá no diretório `src/test/java/runner`:
