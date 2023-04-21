@@ -14,7 +14,6 @@ public class MenuStep {
 
     public MenuStep() {
         homeBlogPage = new HomeBlogPage(DriverFactory.getDriver());
-
     }
 
     @Dado("que eu estou na tela inicial do Blog da Ene Soluções")
