@@ -1,12 +1,16 @@
 package page;
 
 import core.BasePage;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.ScreenShotUtils;
 
 import java.util.Objects;
+
+import static core.DriverFactory.getDriver;
 
 public class HomeBlogPage extends BasePage {
 
@@ -58,20 +62,30 @@ public class HomeBlogPage extends BasePage {
     public void accessWebSite() {
         driver.get("https://www.enesolucoes.com.br/");
         dsl.toClick(buttonBlog);
+
     }
 
-    public void clickButtonMenu(String menu) {
+    public void clickButtonMenu(String menu) throws InterruptedException {
         switch (menu) {
             case "Serviços":
+                highLighterMethod(buttonServicos);
+                ScreenShotUtils.takeScreenshot();
                 dsl.toClick(buttonServicos);
                 break;
             case "Vagas":
+                Thread.sleep(900);
+                highLighterMethod(buttonVagas);
+                ScreenShotUtils.takeScreenshot();
                 dsl.toClick(buttonVagas);
                 break;
             case "Contato":
+                highLighterMethod(buttonContato);
+                ScreenShotUtils.takeScreenshot();
                 dsl.toClick(buttonContato);
                 break;
             case "Contratar":
+                highLighterMethod(buttonContratar);
+                ScreenShotUtils.takeScreenshot();
                 dsl.toClick(buttonContratar);
                 break;
         }
@@ -83,17 +97,23 @@ public class HomeBlogPage extends BasePage {
             case "a tela de Serviços":
                 if (Objects.equals(dsl.getText(textPageServicos), "Alocação de squads ágeis com especialistas")) {
                     test = true;
+                    highLighterMethod(textPageServicos);
+                    ScreenShotUtils.takeScreenshot();
                 }
                 break;
             case "a página de vagas de emprego na Ene Soluções":
                 if (Objects.equals(dsl.getText(textPageVagas), "Vagas")) {
                     test = true;
+                    highLighterMethod(textPageVagas);
+                    ScreenShotUtils.takeScreenshot();
                 }
                 break;
             case "o formulário de contato da Ene Soluções":
             case "o formulário de contratação de serviços da Ene":
                 if (Objects.equals(dsl.getText(textPageContato), "Vamos construir projetos incríveis juntos?")) {
                     test = true;
+                    highLighterMethod(textPageContato);
+                    ScreenShotUtils.takeScreenshot();
                 }
                 break;
         }
@@ -103,13 +123,19 @@ public class HomeBlogPage extends BasePage {
     public void search(String word) {
         dsl.type(searchWord, word);
         dsl.toClick(buttonSearch);
+        ScreenShotUtils.takeScreenshot();
     }
 
     public Boolean postIsVisible() {
         return titlePost.isDisplayed();
     }
 
-    public Boolean resultNotFound(String resultNotFound){
+    public Boolean resultNotFound(String resultNotFound) {
         return Objects.equals(dsl.getText(titleNoResultsFound), resultNotFound);
+    }
+
+    private void highLighterMethod(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].setAttribute('style', 'border: 6px solid red;');", element);
     }
 }

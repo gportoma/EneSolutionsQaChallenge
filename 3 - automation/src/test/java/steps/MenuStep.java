@@ -22,7 +22,7 @@ public class MenuStep {
     }
 
     @Quando("eu clico no menu {string}")
-    public void euClicoNoMenuMenu(String menu) {
+    public void euClicoNoMenuMenu(String menu) throws InterruptedException {
         homeBlogPage.clickButtonMenu(menu);
     }
 

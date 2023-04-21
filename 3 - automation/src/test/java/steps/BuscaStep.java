@@ -5,6 +5,7 @@ import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
 import page.HomeBlogPage;
+import utils.ScreenShotUtils;
 
 public class BuscaStep {
 
