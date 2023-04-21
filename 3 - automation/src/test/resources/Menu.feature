@@ -8,8 +8,8 @@ Funcionalidade: Menu
     Então o site deve me direcionar para <tela>
 
     Exemplos:
-      | menu        | tela                                              |
-      | "Serviços"  | "a tela de Serviços"                              |
-      | "Vagas"     | "a página de vagas de emprego na Ene Soluções"    |
-      | "Contato"   | "o formulário de contato da Ene Soluções"         |
+      | menu        | tela                                             |
+      | "Serviços"  | "a tela de Serviços"                             |
+      | "Vagas"     | "a página de vagas de emprego na Ene Soluções"   |
+      | "Contato"   | "o formulário de contato da Ene Soluções"        |
       | "Contratar" | "o formulário de contratação de serviços da Ene" |
